@@ -8,7 +8,8 @@ void dj_algo(vector<pair<int, int>> adj[], int n) {
     //  IT REPRESENTS SHORTEST DISTANCE FROM "FIRST NODE" TO ALL THE "OTHER NODES" dist[node];
     vector<int> dist(n, INT_MAX);
 
-   
+
+
     queue< pair<int, int> > q;
     
     // the distance that will take to travel to first node from first node is 0 so:
@@ -17,15 +18,15 @@ void dj_algo(vector<pair<int, int>> adj[], int n) {
     // 2. insert first node to initiate the process
     q.push({dist[0], 0});
     
-    // as long as there are nodes in priority queue
+    // as long as there are nodes in queue
     while(!q.empty()){
 
-        // pop the top node
+        // take out the front node
         pair<int, int> node = q.front(); q.pop();
 
         int distance = node.first;
         int u = node.second;
-
+        // traverse all its adjacent nodes and check if any shortest path possible
         for(auto i: adj[u]){
             // destination node
             int destination = i.second;
@@ -37,7 +38,7 @@ void dj_algo(vector<pair<int, int>> adj[], int n) {
             if(total_distance < dist[destination]){
             //  1. update the distance of that node
                 dist[destination] = total_distance;
-            //  2. push the updated node to the priority queue -> to check if there is any shorter route available  
+            //  2. push the updated node to the priority queue -> to check if there is any other shorter route available  
                 q.push({dist[destination], destination});
             }
         }

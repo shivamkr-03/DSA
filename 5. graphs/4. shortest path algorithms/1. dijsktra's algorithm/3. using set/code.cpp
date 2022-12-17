@@ -36,8 +36,8 @@ void dj_algo(vector<pair<int, int>> adj[], int n) {
             
             // if total_distance is shorter than the current distance that takes to travel to destination:
             if(total_distance < dist[destination]){
-            // if the node exist already erase it
-                if(dist[destination] == INT_MAX) set.erase({dist[destination], destination});
+            // if the node exist already then its distance wont be INT_MAX so erase it as we found shorter route...
+                if(dist[destination] != INT_MAX) set.erase({dist[destination], destination});
             //  1. update the distance of that node
                 dist[destination] = total_distance;
             //  2. push the updated node to the priority queue -> to check if there is any shorter route available  
